@@ -1,0 +1,46 @@
+ZSH_THEME="af-magic"
+plugins=(git osx nmap docker brew web-search zsh-autosuggestions)
+COMPLETION_WAITING_DOTS="true"
+export ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE=fg=239
+export PAGER=less
+export EDITOR='code'
+alias s="open ~/Desktop/screenshots"
+alias t="prettyping google.com"
+test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
+alias scanlan="nmap -sP 192.168.1.0/24"
+alias clean-sysdiagnose="open ~/Library/Logs/CrashReporter/MobileDevice/Michael\'s\ iPhone/DiagnosticLogs/sysdiagnose"
+alias beep="afplay /System/Library/Sounds/Ping.aiff -v 2"
+alias not="terminal-notifier -sound default"
+alias l="exa -a"
+alias ls="exa -lha"
+alias lsl="exa -Ta"
+alias o="open"
+alias ga="git add"
+alias gc="git checkout"
+alias gs="git status"
+alias gd="git diff"
+alias gdc="git diff --cached"
+alias gp="git push --set-upstream origin"
+alias card="cd ~/code/credit_card"
+alias infra="cd ~/code/infrastructure"
+alias web="cd ~/code/web"
+alias arch="cd ~/code/architecture"
+alias k="k9s"
+alias kc="kubectx"
+alias pm="cd ~/code/python-monorepo"
+
+function gr() {
+  git for-each-ref --sort=-committerdate --format="%(committerdate) %09 %(authorname) %09 %(refname)" | grep "$(git config --get user.name)" | head
+}
+
+function gpo () {
+  git pull origin $(git branch --show-current)
+}
+
+function gpr () {
+  git commit -m $1 && gp && open $(git pull-request -b main $2)
+}
+
+function grebase() {
+  gc main && gpo && gc - && git rebase main && gp -f
+}
