@@ -21,13 +21,8 @@ alias gs="git status"
 alias gd="git diff"
 alias gdc="git diff --cached"
 alias gp="git push --set-upstream origin"
-alias card="cd ~/code/credit_card"
-alias infra="cd ~/code/infrastructure"
-alias web="cd ~/code/web"
-alias arch="cd ~/code/architecture"
 alias k="k9s"
 alias kc="kubectx"
-alias pm="cd ~/code/python-monorepo"
 
 function gr() {
   git for-each-ref --sort=-committerdate --format="%(committerdate) %09 %(authorname) %09 %(refname)" | grep "$(git config --get user.name)" | head
