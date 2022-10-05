@@ -1,4 +1,4 @@
-ZSH_THEME="af-magic"
+ZSH_THEME="bureau"
 plugins=(osx nmap docker brew web-search zsh-autosuggestions)
 COMPLETION_WAITING_DOTS="true"
 export ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE=fg=239
@@ -33,7 +33,7 @@ function gpo () {
 }
 
 function gpr () {
-  git commit -m $1 && gp && open $(git pull-request -b main $2)
+  git commit -m $1 && gp && gh pr create -B main -f
 }
 
 function grebase() {
